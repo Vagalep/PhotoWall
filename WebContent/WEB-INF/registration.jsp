@@ -11,10 +11,10 @@
 <div style="width: 100%; height: 100%; position: fixed; top: 40%;">
 
 	<form action="Registration" method="POST">
-		Login: <input style="margin-left:28px;" type="text" name="login"  value="${prevLog}"/> <span style="font-style: italic; color: red">${requestScope["loginError"]}</span> <br /><br />
-		Password: <input style="margin-left:6px;" type="text" name="password" /> <span style="font-style: italic; color: red">${requestScope["pwdError"]}</span> <br /><br />
-		First name: <input style="margin-left:-1px;" type="text" name="firstName" value="${prevFirst}" /> <span style="font-style: italic; color: red">${requestScope["fError"]}</span> <br /><br />
-		Last name: <input type="text" name="lastName" value="${prevLast}" /> <span style="font-style: italic; color: red">${requestScope["lError"]}</span> <br /><br />
+		Login: <input style="margin-left:28px;" type="text" name="login" value="${prevLog}"/> <span style="font-style: italic; color: red; position: absolute;">${requestScope["loginError"]}</span> <br /><br />
+		Password: <input style="margin-left:6px;" type="text" name="password" /> <span style="font-style: italic; color: red; position: absolute;">${requestScope["pwdError"]}</span> <br /><br />
+		First name: <input style="margin-left:-1px;" type="text" name="firstName" value="${prevFirst}" /> <span style="font-style: italic; color: red; position: absolute;">${requestScope["fError"]}</span> <br /><br />
+		Last name: <input type="text" name="lastName" value="${prevLast}" /> <span style="font-style: italic; color: red; position: absolute;">${requestScope["lError"]}</span> <br /><br />
 		<input type="submit" name="registration" value="Registration" /><br /><br />
 	</form>
 	<a href="/PhotoWall/home" style="font-style: italic">Back to home page</a>

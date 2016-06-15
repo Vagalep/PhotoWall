@@ -9,9 +9,9 @@
 <body
 	style="background: url(images/indexBG.jpg); width: 100%; background-size: 100% 100%; background-attachment: fixed; text-align: center">
 	<div style="width: 100%; height: 100%; position: fixed; top: 50%;">
-		<form action="LogInServlet" method="POST">
+		<form action="LogIn" method="POST">
 			<b>Login:&nbsp;</b><input type="text" name="login" /> 
-			<b>Password:&nbsp;</b><input type="password" name="password" /> <br /> <br /> 
+			<b>Password:&nbsp;</b><input type="password" name="password" /> <br /> <span style="font-style: italic; color: red;">${requestScope["authError"]}</span> <br /> <br />
 			<input type="submit" name="enter" value="Log In" /> <br /> <br />
 		</form>
 		<a href="/PhotoWall/registration">Sing in</a>

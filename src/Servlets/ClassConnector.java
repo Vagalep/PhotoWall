@@ -36,13 +36,17 @@ public class ClassConnector {
 		return rs.next();
 	}
 	
-	boolean selectUserID(String login) throws SQLException {
+	String selectUserID(String login) throws SQLException {
 		try {
 			rs = st.executeQuery("SELECT (id) FROM users where user_name='" + login + "';");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return rs.next();
+		String id = null;
+		if (rs.next()){
+			id = rs.getString(1);
+			}
+		return id;
 	}
 
 	void insertNewUser(String login, String password, String firstName, String lastName) throws SQLException {
