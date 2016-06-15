@@ -1,6 +1,8 @@
 package Servlets;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -64,6 +66,6 @@ public class Uploader extends HttpServlet {
 		} else {
 			request.setAttribute("message", "Sorry this Servlet only handles file upload request");
 		}
-		request.getRequestDispatcher("/WEB-INF/main.jsp").forward(request, response);
+		request.getRequestDispatcher("/Authorize").forward(request, response);
 	}
 }

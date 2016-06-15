@@ -15,7 +15,7 @@ public class ClassConnector {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/insta_killer?user=root&password=123123123");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/photo_wall?user=root&password=123123123");
 		st = con.createStatement();
 	}
 
@@ -40,7 +40,7 @@ public class ClassConnector {
 	String selectUserID(String login) throws SQLException {
 		String id = null;
 		try {
-			rs = st.executeQuery("SELECT (id) FROM users where user_name='" + login + "';");
+			rs = st.executeQuery("SELECT (user_id) FROM users where user_name='" + login + "';");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -62,6 +62,19 @@ public class ClassConnector {
 			}
 		return usersList;
 	}
+	
+	ArrayList<String> selectPhotosName() throws SQLException {
+		ArrayList<String> usersList = new ArrayList<String>();
+		try {
+			rs = st.executeQuery("SELECT (photo_name) FROM photos;");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		while (rs.next()){
+			usersList.add(rs.getString(1));
+			}
+		return usersList;
+	}
 
 	void insertNewUser(String login, String password, String firstName, String lastName) throws SQLException {
 		st.execute("insert into users (user_name, user_password, user_first_name, user_last_name) values ('"
@@ -69,7 +82,7 @@ public class ClassConnector {
 	}
 	
 	void insertNewPhoto(String photosName, String userID) throws SQLException {
-		st.execute("insert into photos (photo_name, uploader_id) values ('"+ photosName + "', '" + userID + "');");
+		st.execute("insert into photos (photo_name, uploader_id, post_date, post_time) values ('"+ photosName + "', " + userID + ", now(), now());");
 	}
 
 	void close() throws SQLException {
@@ -77,5 +90,6 @@ public class ClassConnector {
 		st.close();
 		con.close();
 	}
-
+//
+//
 }
