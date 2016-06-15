@@ -1,6 +1,7 @@
 package Servlets;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class ClassConnector {
 
@@ -37,16 +38,29 @@ public class ClassConnector {
 	}
 	
 	String selectUserID(String login) throws SQLException {
+		String id = null;
 		try {
 			rs = st.executeQuery("SELECT (id) FROM users where user_name='" + login + "';");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		String id = null;
-		if (rs.next()){
+		while (rs.next()){
 			id = rs.getString(1);
 			}
 		return id;
+	}
+	
+	ArrayList<String> selectUsersName() throws SQLException {
+		ArrayList<String> usersList = new ArrayList<String>();
+		try {
+			rs = st.executeQuery("SELECT (user_name) FROM users;");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		while (rs.next()){
+			usersList.add(rs.getString(1));
+			}
+		return usersList;
 	}
 
 	void insertNewUser(String login, String password, String firstName, String lastName) throws SQLException {
