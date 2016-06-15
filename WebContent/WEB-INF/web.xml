@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+  <welcome-file-list>
+    <welcome-file>RedirectToIndex</welcome-file>
+  </welcome-file-list>
+  <description>
+        This is a simple web application with a source code organization
+        based on the recommendations of the Application Developer's Guide.
+    </description>
+  <servlet>
+    <servlet-name>RedirectToIndex</servlet-name>
+    <servlet-class>Servlets.RedirectToIndex</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RedirectToIndex</servlet-name>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RedirectToRegistration</servlet-name>
+    <servlet-class>Servlets.RedirectToRegistration</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RedirectToRegistration</servlet-name>
+    <url-pattern>/registration</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>RegistrationAget</servlet-name>
+    <servlet-class>Servlets.RegistrationAget</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegistrationAget</servlet-name>
+    <url-pattern>/RegistrationAgent</url-pattern>
+  </servlet-mapping>
+</web-app>
