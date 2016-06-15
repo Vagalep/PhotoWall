@@ -4,6 +4,7 @@
     <%@ page import="java.util.*"%>
 	<%@ page import="Servlets.ClassUsersManager"%>
 	<% ClassUsersManager classUM = new ClassUsersManager();
+	ArrayList<String> ul = classUM.getUsersList();
 	%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,11 +16,16 @@
 
 <body style="background: url(images/mainBG.jpg); width: 100%; background-size: 100% 100%; background-attachment: fixed;">
 SESSION: <%= (String) session.getAttribute("authorization") %>
-		<a href="/InstaKiller/Home"/>Quit</a><br />
-		Select a file to upload:
-		<form action="UploadServlet" method="post" enctype="multipart/form-data">
-		<input type="file" name="file" value="select images..." />	
-		<input type="submit" value="start upload" />
+		<a href="/PhotoWall/home"/>Quit</a><br />
+		
+		
+<div>
+            <h3> Choose File to Upload in Server </h3>
+            <form action="Uploader" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" />
+                <input type="submit" value="upload" />
+            </form>          
+        </div>	
 		
 		<div>
            ${requestScope["message"]}
@@ -38,9 +44,9 @@ SESSION: <%= (String) session.getAttribute("authorization") %>
 		
 			<div style="width: 300px; border: 2px; background: url(images/usersBG.jpg); padding: 10px 0; box-sizing: border-box; display: table-cell; vertical-align: top; text-align: center;">
 			<h3>Our Users:<h3/><br />
-			<% for (int i=0; i<classUM.getUsersList().size();i++){ %>
+			<% for (int i=0; i<ul.size();i++){ %>
         	<tr>      
-            	<td><% out.write(classUM.getUsersList().get(i).toString());%></td><br /> <br /> 
+            	<td><% out.write(ul.get(i).toString());%></td><br /> <br /> 
        	 	</tr>
 			<%}%>
 

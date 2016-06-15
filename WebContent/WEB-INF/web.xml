@@ -39,12 +39,20 @@
     <servlet-name>LogIn</servlet-name>
     <url-pattern>/LogInAgent</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <servlet-name>Authorize</servlet-name>
     <servlet-class>Servlets.Authorize</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Authorize</servlet-name>
     <url-pattern>/AuthorizeAgent</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <servlet-name>Uploader</servlet-name>
+    <servlet-class>Servlets.Uploader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Uploader</servlet-name>
+    <url-pattern>/UploaderAgent</url-pattern>
   </servlet-mapping>
 </web-app>

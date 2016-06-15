@@ -67,6 +67,10 @@ public class ClassConnector {
 		st.execute("insert into users (user_name, user_password, user_first_name, user_last_name) values ('"
 						+ login + "', '" + password + "', '" + firstName + "', '" + lastName + "');");
 	}
+	
+	void insertNewPhoto(String photosName, String userID) throws SQLException {
+		st.execute("insert into photos (photo_name, uploader_id) values ('"+ photosName + "', '" + userID + "');");
+	}
 
 	void close() throws SQLException {
 		rs.close();
