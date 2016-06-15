@@ -2,6 +2,7 @@ package Servlets;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ClassConnector {
 
@@ -63,17 +64,19 @@ public class ClassConnector {
 		return usersList;
 	}
 	
-	ArrayList<String> selectPhotosName() throws SQLException {
-		ArrayList<String> usersList = new ArrayList<String>();
+	ArrayList<ClassPicture> selectPhotosInfo() throws SQLException {
+		ArrayList<ClassPicture> photoList = new ArrayList<ClassPicture>();
+		ClassPicture picture;
 		try {
-			rs = st.executeQuery("SELECT (photo_name) FROM photos;");
+			rs = st.executeQuery("SELECT * FROM photos;");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		while (rs.next()){
-			usersList.add(rs.getString(1));
+			picture = new ClassPicture(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+			photoList.add(picture);
 			}
-		return usersList;
+		return photoList;
 	}
 
 	void insertNewUser(String login, String password, String firstName, String lastName) throws SQLException {

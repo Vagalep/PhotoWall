@@ -4,11 +4,13 @@
     
     <%@ page import="java.util.*"%>
 	<%@ page import="Servlets.ClassUsersManager"%>
+	<%@ page import="Servlets.ClassPicture"%>
+	
 	<% ClassUsersManager classUM = new ClassUsersManager();
 	ArrayList<String> ul = classUM.getUsersList();
 	
 	ClassPhotoManager classPM = new ClassPhotoManager();
-	ArrayList<String> pl = classPM.getPhotosList();
+	ArrayList<ClassPicture> pl = classPM.getPhotosList();
 	%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -36,9 +38,9 @@ SESSION: <%= (String) session.getAttribute("authorization") %>
 		<div style="display: table; width: 100%;">
 	<% for (int i=0; i<pl.size();i++){ %>
 			<div style="background-color: #a6a6a6; width: 100%; float: left; padding: 10px 0; display: inline-block; box-sizing: border-box;">
-				<img src="photos/<%= pl.get(i).toString()%>" style="width:600px; height:400px; margin-left: 50px; padding-bottom: inherit; padding-top: inherit;">
+				<img src="photos/<%= pl.get(i).get_photo_name() %>" style="width:600px; height:400px; margin-left: 50px; padding-bottom: inherit; padding-top: inherit;">
 				<div style="background: brown; width: 100%; height: 35px; padding: 10px; box-sizing: border-box;">
-				<b>Posted:</b>&nbsp;<b>By:</b>
+				<b>Posted: <%= pl.get(i).get_post_date() %>; <%= pl.get(i).get_post_time() %></b>&nbsp;<b>By: <%= pl.get(i).get_uploader() %></b>
 				</div>
 			</div>
 		<%}%>
