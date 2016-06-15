@@ -26,6 +26,24 @@ public class ClassConnector {
 		}
 		return rs.next();
 	}
+	
+	boolean selectLoginPwdCheck(String login, String password) throws SQLException {
+		try {
+			rs = st.executeQuery("SELECT * FROM users where user_name='" + login + "' and user_password='" + password + "';");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs.next();
+	}
+	
+	boolean selectUserID(String login) throws SQLException {
+		try {
+			rs = st.executeQuery("SELECT (id) FROM users where user_name='" + login + "';");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs.next();
+	}
 
 	void insertNewUser(String login, String password, String firstName, String lastName) throws SQLException {
 		st.execute("insert into users (user_name, user_password, user_first_name, user_last_name) values ('"

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -46,7 +45,6 @@ public class Registration extends HttpServlet {
 		request.setAttribute("error", "NAME ZANIATO!");
 		try {
 			ClassConnector c = new ClassConnector();
-//			try{
 				if (c.selectLoginCheck(login) != true){
 					if(login.trim().length()==0){
 						request.setAttribute("loginError", "Can't be blank");
