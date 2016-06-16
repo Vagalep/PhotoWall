@@ -51,7 +51,7 @@ public class ClassConnector {
 		return id;
 	}
 	
-	ArrayList<String> selectUsersName() throws SQLException {
+/*	ArrayList<String> selectUsersName() throws SQLException {
 		ArrayList<String> usersList = new ArrayList<String>();
 		try {
 			rs = st.executeQuery("SELECT (user_name) FROM users;");
@@ -63,12 +63,12 @@ public class ClassConnector {
 			}
 		return usersList;
 	}
-	
+*/	
 	ArrayList<ClassPicture> selectPhotosInfo() throws SQLException {
 		ArrayList<ClassPicture> photoList = new ArrayList<ClassPicture>();
 		ClassPicture picture;
 		try {
-			rs = st.executeQuery("SELECT * FROM photos;");
+			rs = st.executeQuery("select photos.photo_id, users.user_name, photo_name, post_date, post_time from users left join photos on photos.uploader_id = users.user_id order by photo_id desc limit 5;");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -77,6 +77,21 @@ public class ClassConnector {
 			photoList.add(picture);
 			}
 		return photoList;
+	}
+	
+	ArrayList<ClassUsers> selectUsersInfo() throws SQLException {
+		ArrayList<ClassUsers> usersList = new ArrayList<ClassUsers>();
+		ClassUsers users;
+		try {
+			rs = st.executeQuery("select users.user_name, count(uploader_id) as sort from users left join photos on photos.uploader_id = users.user_id group by users.user_id order by sort desc;");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		while (rs.next()){
+			users = new ClassUsers(rs.getString(1), rs.getString(2));
+			usersList.add(users);
+			}
+		return usersList;
 	}
 
 	void insertNewUser(String login, String password, String firstName, String lastName) throws SQLException {

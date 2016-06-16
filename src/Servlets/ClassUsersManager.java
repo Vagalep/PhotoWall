@@ -4,8 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ClassUsersManager {
-	public ArrayList<String> getUsersList() throws SQLException{
+	public ArrayList<ClassUsers> getUsersList() throws ClassNotFoundException, SQLException{
 		ClassConnector c = new ClassConnector();
-		return c.selectUsersName();
+		return c.selectUsersInfo();
 	}	
 }
